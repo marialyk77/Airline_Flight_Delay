@@ -1,4 +1,4 @@
-# Airline_Flight_Delay
+# Airline Flight Delay
 
 ## ETL
 
@@ -59,7 +59,7 @@
 
  - Upgraded 1st row as header:
 
-### 💡 Adding a Seperate Date Table (A decision made solely by the project author) 💡
+### 💡 Adding a Seperate Date Table (*A decision made solely by the project author*) 💡
 
 - Opened a Blank Query.
 - In the Advanced Editor, I entered the date code:
