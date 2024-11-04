@@ -2,7 +2,7 @@
 
 ## ETL
 
-- Extracted the data from 4 CSV files.
+###  Extracted the data from 4 CSV files.
 
 ![image](https://github.com/user-attachments/assets/16aa4a6e-4f78-4307-9a86-a27cb5be7b37)
 
