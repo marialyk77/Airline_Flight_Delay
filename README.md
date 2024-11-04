@@ -14,7 +14,7 @@
 - Total Rows: 5819079 
 
 
-## Transformation (Flights Table)
+### Transformation (Flights Table)
 
 - Kept only the **necessary** collumns.
 
@@ -41,7 +41,7 @@
  - Total Columns: 2
  - Total Rows: 15
 
-## Transformation (Airlines Table)
+### Transformation (Airlines Table)
 - Upgraded 1st row as header:
 
   ![image](https://github.com/user-attachments/assets/f2b35cb9-f324-42d7-8a5f-3909f116e430)
@@ -51,6 +51,6 @@
  - Total Columns: 7
  - Total Rows: 322
 
-## Transformation (Airlines Table)
+### Transformation (Airlines Table)
 
 - No transformations needed 
