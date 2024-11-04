@@ -7,6 +7,7 @@
 ![image](https://github.com/user-attachments/assets/16aa4a6e-4f78-4307-9a86-a27cb5be7b37)
 
 
+![image](https://github.com/user-attachments/assets/8e8e7f5f-4145-418f-951c-e9250fc74e09)
 
 
 ### Transformation (Flights Table)
@@ -101,7 +102,7 @@ in
 
 - **After creating a specialized Date table, I made additional transformations in the Fact table: *Flights***
 
-  1. Merged the Date column from the Date table into the Flights table. **Reason:** This was done to ensure that both tables have common data for establishing the relationship later.
+1. Merged the Date column from the Date table into the Flights table. **Reason:** This was done to ensure that both tables have common data for establishing the relationship later.
  
  ![image](https://github.com/user-attachments/assets/5238a505-0578-4d25-9092-1e0e54365f0b)
 
