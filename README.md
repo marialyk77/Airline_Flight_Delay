@@ -50,4 +50,72 @@
  - Total Columns: 7
  - Total Rows: 322
 
- - No transformations needed 
+ - No transformations needed
+
+### Transformation (Cancelation Codes Table)
+
+ - Total Columns: 2
+ - Total Rows: 5
+
+ - Upgraded 1st row as header:
+
+### 💡💡 Adding a Seperate Date Table (Decision made by the author of the current Project) 💡💡
+
+- Opened a Blank Query.
+- In the Advanced Editor, I entered the date code:
+
+```ruby
+let fnDateTable = (StartDate as date, EndDate as date, FYStartMonth as number) as table =>
+  let
+    DayCount = Duration.Days(Duration.From(EndDate - StartDate)),
+    Source = List.Dates(StartDate,DayCount,#duration(1,0,0,0)),
+    TableFromList = Table.FromList(Source, Splitter.SplitByNothing()),   
+    ChangedType = Table.TransformColumnTypes(TableFromList,{{"Column1", type date}}),
+    RenamedColumns = Table.RenameColumns(ChangedType,{{"Column1", "Date"}}),
+    InsertYear = Table.AddColumn(RenamedColumns, "Year", each Date.Year([Date]),type text),
+    InsertYearNumber = Table.AddColumn(RenamedColumns, "YearNumber", each Date.Year([Date])),
+    InsertQuarter = Table.AddColumn(InsertYear, "QuarterOfYear", each Date.QuarterOfYear([Date])),
+    InsertMonth = Table.AddColumn(InsertQuarter, "MonthOfYear", each Date.Month([Date]), type text),
+    InsertDay = Table.AddColumn(InsertMonth, "DayOfMonth", each Date.Day([Date])),
+    InsertDayInt = Table.AddColumn(InsertDay, "DateInt", each [Year] * 10000 + [MonthOfYear] * 100 + [DayOfMonth]),
+    InsertMonthName = Table.AddColumn(InsertDayInt, "MonthName", each Date.ToText([Date], "MMMM"), type text),
+    InsertCalendarMonth = Table.AddColumn(InsertMonthName, "MonthInCalendar", each (try(Text.Range([MonthName],0,3)) otherwise [MonthName]) & " " & Number.ToText([Year])),
+    InsertCalendarQtr = Table.AddColumn(InsertCalendarMonth, "QuarterInCalendar", each "Q" & Number.ToText([QuarterOfYear]) & " " & Number.ToText([Year])),
+    InsertDayWeek = Table.AddColumn(InsertCalendarQtr, "DayInWeek", each Date.DayOfWeek([Date])),
+    InsertDayName = Table.AddColumn(InsertDayWeek, "DayOfWeekName", each Date.ToText([Date], "dddd"), type text),
+    ChangedType1 = Table.TransformColumnTypes( InsertDayName,{{"QuarternYear", Int64.Type},{"Week Number", Int64.Type},{"Year", type text},{"MonthnYear", Int64.Type}, {"DateInt", Int64.Type}, {"DayOfMonth", Int64.Type}, {"MonthOfYear", Int64.Type}, {"QuarterOfYear", Int64.Type}, {"MonthInCalendar", type text}, {"QuarterInCalendar", type text}, {"DayInWeek", Int64.Type}}),
+    InsertShortYear = Table.AddColumn(ChangedType1, "ShortYear", each Text.End(Text.From([Year]), 2), type text),
+    AddFY = Table.AddColumn(InsertShortYear, "FY", each "FY"&(if [MonthOfYear]>=FYStartMonth then Text.From(Number.From([ShortYear])+1) else [ShortYear]))
+in
+    AddFY
+in
+    fnDateTable
+```
+
+  ![image](https://github.com/user-attachments/assets/4d71b154-5401-486d-a44b-304a6eb597ed)
+
+- Applied Futher transformations within the *Date table*.  
+
+ ![image](https://github.com/user-attachments/assets/49174447-7993-4dad-9252-d2c0e75b4806)
+
+
+- **After having created a specilized *Date* table, I had to make some more transformations in the Fact table: *Flights*:**
+
+  1. Merged the column: *Date* from the *Date table* to the *Flights table*. Reason: to have a table with common data in both tables for building the relatioship later.
+ 
+ ![image](https://github.com/user-attachments/assets/5238a505-0578-4d25-9092-1e0e54365f0b)
+
+ ![image](https://github.com/user-attachments/assets/83b53c15-b04b-466b-a49b-56f6004fab08)
+
+  3. Deleted any related to date column from the *Flights* table to avoid redundancy. 
+ 
+
+### Load 
+
+![image](https://github.com/user-attachments/assets/aa1c9f83-1359-487d-9eb7-db8a89cbaf54)
+
+## Relational Model - Star Schema 
+
+![image](https://github.com/user-attachments/assets/09504491-d8a0-4410-a493-d9f29dbffef7)
+
+
