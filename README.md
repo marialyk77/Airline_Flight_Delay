@@ -59,7 +59,7 @@
 
  - Upgraded 1st row as header:
 
-### 💡💡 Adding a Seperate Date Table (Decision made by the author of the current Project) 💡💡
+### 💡 Adding a Seperate Date Table (A decision made solely by the project author) 💡
 
 - Opened a Blank Query.
 - In the Advanced Editor, I entered the date code:
@@ -99,16 +99,17 @@ in
  ![image](https://github.com/user-attachments/assets/49174447-7993-4dad-9252-d2c0e75b4806)
 
 
-- **After having created a specilized *Date* table, I had to make some more transformations in the Fact table: *Flights*:**
+- **After creating a specialized Date table, I made additional transformations in the Fact table: *Flights***
 
-  1. Merged the column: *Date* from the *Date table* to the *Flights table*. Reason: to have a table with common data in both tables for building the relatioship later.
+  1. Merged the Date column from the Date table into the Flights table. **Reason:** This was done to ensure that both tables have common data for establishing the relationship later.
  
  ![image](https://github.com/user-attachments/assets/5238a505-0578-4d25-9092-1e0e54365f0b)
 
  ![image](https://github.com/user-attachments/assets/83b53c15-b04b-466b-a49b-56f6004fab08)
 
-  3. Deleted any related to date column from the *Flights* table to avoid redundancy. 
+  2. Deleted any date-related columns from the *Flights table* to avoid redundancy. 
  
+ ![image](https://github.com/user-attachments/assets/16a5493f-fdf2-4784-9c30-f67505a16338)
 
 ### Load 
 
