@@ -14,8 +14,6 @@ I established the connection between Power BI and SQL Server using a parameter. 
 
 ![image](https://github.com/user-attachments/assets/ff657b7d-b7e7-4961-9760-fa787563ae6a)
 
-![image](https://github.com/user-attachments/assets/137859f8-9749-4b97-b7b8-afb2f0ce33ea)
-
 
 
 ### Transformation (Flights Table)
@@ -130,6 +128,9 @@ ADD Status AS (
 
 ![image](https://github.com/user-attachments/assets/a86cb9d5-6a9e-4d52-b263-0bf5b9404b6e)
 
+- Created a parameter for filtering the Origin Airport in the backend.
+
+![image](https://github.com/user-attachments/assets/e40b2cd9-7feb-44b4-805f-4e09b3b9b2ee)
 
 
 ### Transformation (Airlines Table)
