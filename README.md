@@ -205,7 +205,7 @@ in
     fnDateTable
 ```
 
-  ![image](https://github.com/user-attachments/assets/4d71b154-5401-486d-a44b-304a6eb597ed)
+ 
 
 
 - After creating a specialized Date table, I **deleted any date-related columns from the *Flights table* to avoid redundancy**. 
