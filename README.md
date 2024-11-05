@@ -10,6 +10,11 @@ I quickly realized that the *Flights table* **was too large**, which was impacti
 
 ![image](https://github.com/user-attachments/assets/dd97f4b3-aaac-48b4-8428-758d3ae37924)
 
+I established the connection between Power BI and SQL Server using a parameter. I know it might be a bit of an exaggeration, but I'm always happy to practice my skills.
+
+![image](https://github.com/user-attachments/assets/ff657b7d-b7e7-4961-9760-fa787563ae6a)
+
+![image](https://github.com/user-attachments/assets/137859f8-9749-4b97-b7b8-afb2f0ce33ea)
 
 
 
@@ -169,6 +174,8 @@ ADD Status AS (
 
 - **Distorted Visualizations**: Visuals may show spikes or dips on days without data, misrepresenting patterns and leading to confusion about flight delays.
 
+**Steps creating the specialized Dates table**.
+
 - Opened a Blank Query.
 - In the Advanced Editor, I entered the date code:
 
@@ -191,11 +198,11 @@ let fnDateTable = (StartDate as date, EndDate as date, FYStartMonth as number) a
     InsertCalendarQtr = Table.AddColumn(InsertCalendarMonth, "QuarterInCalendar", each "Q" & Number.ToText([QuarterOfYear]) & " " & Number.ToText([Year])),
     InsertDayWeek = Table.AddColumn(InsertCalendarQtr, "DayInWeek", each Date.DayOfWeek([Date])),
     InsertDayName = Table.AddColumn(InsertDayWeek, "DayOfWeekName", each Date.ToText([Date], "dddd"), type text),
-    ChangedType1 = Table.TransformColumnTypes( InsertDayName,{{"QuarternYear", Int64.Type},{"Week Number", Int64.Type},{"Year", type text},{"MonthnYear", Int64.Type}, {"DateInt", Int64.Type}, {"DayOfMonth", Int64.Type}, {"MonthOfYear", Int64.Type}, {"QuarterOfYear", Int64.Type}, {"MonthInCalendar", type text}, {"QuarterInCalendar", type text}, {"DayInWeek", Int64.Type}}),
-    InsertShortYear = Table.AddColumn(ChangedType1, "ShortYear", each Text.End(Text.From([Year]), 2), type text),
-    AddFY = Table.AddColumn(InsertShortYear, "FY", each "FY"&(if [MonthOfYear]>=FYStartMonth then Text.From(Number.From([ShortYear])+1) else [ShortYear]))
+    ChangedType1 = Table.TransformColumnTypes( InsertDayName,{{"QuarternYear", Int64.Type},{"Week Number", Int64.Type},{"Year", type text},{"MonthnYear", Int64.Type}, {"DateInt", Int64.Type}, {"DayOfMonth", Int64.Type}, {"MonthOfYear", Int64.Type}, {"QuarterOfYear", Int64.Type}, {"MonthInCalendar", type text}, {"QuarterInCalendar", type text}, {"DayInWeek", Int64.Type}})
+
 in
-    AddFY
+    ChangedType1 
+
 in
     fnDateTable
 ```
@@ -207,15 +214,7 @@ in
  ![image](https://github.com/user-attachments/assets/49174447-7993-4dad-9252-d2c0e75b4806)
 
 
-- **After creating a specialized Date table, I made additional transformations in the Fact table: *Flights***
-
-1. Merged the Date column from the Date table into the Flights table. **Reason:** This was done to ensure that both tables have common data for establishing the relationship later.
- 
- ![image](https://github.com/user-attachments/assets/5238a505-0578-4d25-9092-1e0e54365f0b)
-
- ![image](https://github.com/user-attachments/assets/83b53c15-b04b-466b-a49b-56f6004fab08)
-
-  2. Deleted any date-related columns from the *Flights table* to avoid redundancy. 
+- After creating a specialized Date table, I **deleted any date-related columns from the *Flights table* to avoid redundancy**. 
  
  ![image](https://github.com/user-attachments/assets/16a5493f-fdf2-4784-9c30-f67505a16338)
 
