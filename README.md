@@ -17,21 +17,59 @@ I quickly realized that the *Flights table* **was too large**, which was impacti
 
 - Is the Fact Table.
 - Total Columns: 31
-- Total Rows: 5819079 
+- Total Rows: 5.819.079
+- Data cleaning was performed in **SQL Server**.
 
 - Kept only the **necessary** collumns.
 
-  ![image](https://github.com/user-attachments/assets/69d4db54-89c3-4218-87c4-fe06fe558c62)
+```ruby
+SELECT 
+    YEAR,
+    MONTH,
+    DAY_OF_WEEK,
+    AIRLINE,
+    ORIGIN_AIRPORT,
+    DEPARTURE_DELAY,
+    CANCELLED,
+    CANCELLATION_REASON
+INTO 
+    dbo.FilteredFlights
+FROM 
+    dbo.flights;
+```
 
-- **Data Integrity:** The dataset is complete, with null values present in two columns: *Departure Delay* and *Cancellation Reason*. **These nulls are expected and meaningful.** They indicate instances where there was no delay or cancellation for the corresponding row, so there’s no need to remove them.
+- **Data Integrity:** The dataset is complete. No Nulls
 
-   ![image](https://github.com/user-attachments/assets/0741bcb2-c995-48b0-ae00-7f4efcb5f5cd)
+```ruby
+SELECT 
+    SUM(CASE WHEN YEAR IS NULL THEN 1 ELSE 0 END) AS NullCount_YEAR,
+    SUM(CASE WHEN MONTH IS NULL THEN 1 ELSE 0 END) AS NullCount_MONTH,
+    SUM(CASE WHEN DAY_OF_WEEK IS NULL THEN 1 ELSE 0 END) AS NullCount_DAY_OF_WEEK,
+    SUM(CASE WHEN AIRLINE IS NULL THEN 1 ELSE 0 END) AS NullCount_AIRLINE,
+    SUM(CASE WHEN ORIGIN_AIRPORT IS NULL THEN 1 ELSE 0 END) AS NullCount_ORIGIN_AIRPORT,
+    SUM(CASE WHEN DEPARTURE_DELAY IS NULL THEN 1 ELSE 0 END) AS NullCount_DEPARTURE_DELAY,
+    SUM(CASE WHEN CANCELLED IS NULL THEN 1 ELSE 0 END) AS NullCount_CANCELLED,
+    SUM(CASE WHEN CANCELLATION_REASON IS NULL THEN 1 ELSE 0 END) AS NullCount_CANCELLATION_REASON
+FROM 
+    dbo.FilteredFlights;
+```
 
+![image](https://github.com/user-attachments/assets/822769bc-4e8f-45dd-bf71-0ec72340c55f)
 
  > [!IMPORTANT]
- > Important to note that null values represent the absence of data, which differs from an empty or blank entry.
+ > Important to note that null values represent the absence of data (*in other words it is not known if there should have been a value*), which differs from an empty or blank entry (*Empty indicates that the absence of content is intentional*).
 
- 
+The dataset contained 2 columns with Empty values: 
+
+![image](https://github.com/user-attachments/assets/4df0cbce-96b9-4b21-84f1-8c6080d7af1a)
+
+> [!TIP]
+> Quick Observation:
+
+1. **Cancellation Reason**: Out of the total 5,819,079 rows, **5,729,195 were empty**! That is a good thing: The vast majority of flights **did not face cancellations**. 
+2. **Departure Delay**: Out of the total 5,819,079 rows, **86,153 were empty**! That is not so a good thing: The vast majority of flights **recorded a departure delay**. Therefore, it suggests that these flights experienced delays. We should later investigate how significant these delays were.
+
+
 
 - Added a new calculated column *Status* : **On Time, Delayed, Cancelled.**
 
