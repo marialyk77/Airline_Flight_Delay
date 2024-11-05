@@ -128,9 +128,6 @@ ADD Status AS (
 
 ![image](https://github.com/user-attachments/assets/a86cb9d5-6a9e-4d52-b263-0bf5b9404b6e)
 
-- Created a parameter for filtering the Origin Airport in the backend.
-
-![image](https://github.com/user-attachments/assets/e40b2cd9-7feb-44b4-805f-4e09b3b9b2ee)
 
 
 ### Transformation (Airlines Table)
@@ -210,18 +207,12 @@ in
 
   ![image](https://github.com/user-attachments/assets/4d71b154-5401-486d-a44b-304a6eb597ed)
 
-- Applied Futher transformations within the *Date table*.  
-
- ![image](https://github.com/user-attachments/assets/49174447-7993-4dad-9252-d2c0e75b4806)
-
 
 - After creating a specialized Date table, I **deleted any date-related columns from the *Flights table* to avoid redundancy**. 
  
  ![image](https://github.com/user-attachments/assets/16a5493f-fdf2-4784-9c30-f67505a16338)
 
-### Load 
 
-![image](https://github.com/user-attachments/assets/aa1c9f83-1359-487d-9eb7-db8a89cbaf54)
 
 ## Relational Model - Star Schema 
 
