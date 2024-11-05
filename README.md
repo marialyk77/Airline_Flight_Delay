@@ -18,9 +18,9 @@ I quickly realized that the *Flights table* **was too large**, which was impacti
 - Is the Fact Table.
 - Total Columns: 31
 - Total Rows: 5.819.079
-- Data cleaning was performed in **SQL Server**.
+- Data cleaning was performed in **SQL Server**. 💡 (*A decision made solely by the project author*) 💡
 
-- Kept only the **necessary** collumns.
+- 📝 Kept only the **necessary** collumns.
 
 ```ruby
 SELECT 
@@ -70,10 +70,60 @@ FROM
 2. **Departure Delay**: Out of the total 5,819,079 rows, **86,153 were empty**! That is not so a good thing: The vast majority of flights **recorded a departure delay**. Therefore, it suggests that these flights experienced delays. We should later investigate how significant these delays were.
 
 
+- 📝 Added a new column *Date* by combining the colums: *Year, Month & Day of Week*.
+  
+```ruby
+ALTER TABLE dbo.FilteredFlights
+ADD FullDate DATE;
 
-- Added a new calculated column *Status* : **On Time, Delayed, Cancelled.**
+UPDATE dbo.FilteredFlights
+SET FullDate = CAST(CONCAT(YEAR, '-', MONTH, '-', DAY_OF_WEEK) AS DATE);
 
-  ![image](https://github.com/user-attachments/assets/a1b55fd9-1418-4bc8-8104-f0f3a9d03686)
+```
+- 📝 Check if the *FullDate* column includes data for the entire year: 
+
+```ruby
+SELECT 
+    COUNT(DISTINCT FullDate) AS DistinctDateCount
+FROM 
+    dbo.FilteredFlights;
+```
+**Result:** Only 84 distinct days are recorded, indicating that the dataset does not cover the entire year.
+
+![image](https://github.com/user-attachments/assets/12018294-ff20-42c3-8465-b5341832c1f3)
+
+
+- 📝 Check how many records exist for each day:
+
+```ruby
+SELECT FullDate, COUNT(*) AS RecordsPerDate
+FROM dbo.FilteredFlights
+GROUP BY FullDate
+ORDER BY FullDate;
+```
+
+**Result:** The current dataset contains data only for **THE FIRST 7 DAYS OF EACH MONTH!**.
+
+![image](https://github.com/user-attachments/assets/1337b0b4-3444-40b9-b54e-a1ed08c9135a)
+
+
+
+- 📝 Added a new calculated column *Status* : **On Time, Delayed, Cancelled.**
+
+```ruby
+ALTER TABLE dbo.FilteredFlights
+ADD Status AS (
+    CASE 
+        WHEN CANCELLED = 1 THEN 'Cancelled' 
+        WHEN DEPARTURE_DELAY > 0 THEN 'Delayed' 
+        ELSE 'On Time' 
+    END
+);
+```
+
+**Result:**
+
+![image](https://github.com/user-attachments/assets/a86cb9d5-6a9e-4d52-b263-0bf5b9404b6e)
 
 
 
@@ -81,6 +131,7 @@ FROM
 
  - Total Columns: 2
  - Total Rows: 15
+ - Data cleaning was performed in **Power BI**.
 
  - Upgraded 1st row as header:
 
@@ -91,6 +142,7 @@ FROM
 
  - Total Columns: 7
  - Total Rows: 322
+ - Data cleaning was performed in **Power BI**.
 
  - No transformations needed
 
@@ -102,6 +154,20 @@ FROM
  - Upgraded 1st row as header:
 
 ### 💡 Adding a Seperate Date Table (*A decision made solely by the project author*) 💡
+
+> [!WARNING]
+> The Fact table contains only **a portion of the year**. 
+
+> [!CAUTION]
+> Use a specialized Dates table by establishing a **LEFT JOIN**.
+
+ 🔥 **Risks in Joining a Full Date Table with Partial Fact Table Data:** 
+
+- **Incomplete Analysis**: Joining a full date table with a fact table containing data for only specific days may result in many NULLs or zeros, skewing averages and totals.
+
+- **Misleading Trends**: Analyzing trends over time can lead to incorrect interpretations, as averages may include days with zero flights, underrepresenting actual delays.
+
+- **Distorted Visualizations**: Visuals may show spikes or dips on days without data, misrepresenting patterns and leading to confusion about flight delays.
 
 - Opened a Blank Query.
 - In the Advanced Editor, I entered the date code:
