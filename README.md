@@ -38,7 +38,7 @@ FROM
     dbo.flights;
 ```
 
-- **Data Integrity:** The dataset is complete. No Nulls
+- 📝 **Data Integrity:** The dataset is complete. No Nulls
 
 ```ruby
 SELECT 
@@ -59,7 +59,7 @@ FROM
  > [!IMPORTANT]
  > Important to note that null values represent the absence of data (*in other words it is not known if there should have been a value*), which differs from an empty or blank entry (*Empty indicates that the absence of content is intentional*).
 
-The dataset contained 2 columns with Empty values: 
+- 📝 **Data Completeness:** The dataset contained 2 columns with Empty values: 
 
 ![image](https://github.com/user-attachments/assets/4df0cbce-96b9-4b21-84f1-8c6080d7af1a)
 
