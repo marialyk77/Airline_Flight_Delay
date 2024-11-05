@@ -6,6 +6,7 @@
 
 ![image](https://github.com/user-attachments/assets/16aa4a6e-4f78-4307-9a86-a27cb5be7b37)
 
+I quickly realized that the *Flights table* **was too large**, which was impacting model performance. To address this, I saved the file in **SQL Server**, performed the necessary data cleaning there, and then established a connection between SQL Server and Power BI to import **the cleaned Flights table**.
 
 ![image](https://github.com/user-attachments/assets/8e8e7f5f-4145-418f-951c-e9250fc74e09)
 
