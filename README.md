@@ -164,6 +164,52 @@ ADD Status AS (
 
 ![image](https://github.com/user-attachments/assets/524b2456-3e69-4947-be30-9eb1dfc1a7cf)
 
+- Later, when building the dashboard, I chose to create a bar graph showing the **Day Name** against the cancellation rate (*rather than using the Day of the Week number*).
+-To sort the *Day Name* column in the correct weekly order, I added **a separate Day of Week table** to the model using DAX.
+
+```ruby
+DayOfWeek = 
+DATATABLE(
+    "Day Name", STRING,
+    "SortOrder", INTEGER,
+    {
+        {"Monday", 1},
+        {"Tuesday", 2},
+        {"Wednesday", 3},
+        {"Thursday", 4},
+        {"Friday", 5},
+        {"Saturday", 6},
+        {"Sunday", 7}
+    }
+)
+```
+
+- Added the *Sort Order column* from the **Day of Week table** into the fact table using the **RELATED function**, in order to enable correct sorting of the Day Name column.
+
+```ruby
+Day Name SortOrder = 
+RELATED('DayofWeek'[SortOrder])
+```
+  
+- Final Model:
+
+![image](https://github.com/user-attachments/assets/f6ef7c37-ae2d-4cdb-b932-6250ecd17ec3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
