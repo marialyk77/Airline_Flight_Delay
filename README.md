@@ -84,18 +84,20 @@ I quickly realized that the *Flights table* **was too large**, which was impacti
 
 ![image](https://github.com/user-attachments/assets/dd97f4b3-aaac-48b4-8428-758d3ae37924)
 
-I established the connection between Power BI and SQL Server using a parameter. I know it might be a bit of an exaggeration, but I'm always happy to practice my skills.
+I established the connection between Power BI and SQL Server using a parameter. I know it might be a bit of an exaggeration for this project, but I'm always happy to practice my skills.
 
 ![image](https://github.com/user-attachments/assets/ff657b7d-b7e7-4961-9760-fa787563ae6a)
 
 
 
-### Transformation (Flights Table)
+**1. Flights Table**
 
 - Is the Fact Table.
 - Total Columns: 31
 - Total Rows: 5.819.079
-- Data cleaning was performed in **SQL Server**. 💡 (*A decision made solely by the project author*) 💡
+- Data cleaning and Exploratory Data Analysis was performed in **SQL Server**. 💡 (*A decision made solely by the project author*) 💡
+  
+### Transformation 
 
 - 📝 Kept only the **necessary** collumns.
 
@@ -146,6 +148,7 @@ FROM
 1. **Cancellation Reason**: Out of the total 5,819,079 rows, **5,729,195 were empty**! That is a good thing: The vast majority of flights **did not face cancellations**. 
 2. **Departure Delay**: Out of the total 5,819,079 rows, **86,153 were empty**! That is not so a good thing: The vast majority of flights **recorded a departure delay**. Therefore, it suggests that these flights experienced delays. We should later investigate how significant these delays were.
 
+## EDA 
 
 - 📝 Added a new column *Date* by combining the colums: *Year, Month & Day of Week*.
   
@@ -204,7 +207,7 @@ ADD Status AS (
 
 
 
-### Transformation (Airlines Table)
+**2.Airlines Table**
 
  - Total Columns: 2
  - Total Rows: 15
@@ -215,7 +218,7 @@ ADD Status AS (
   ![image](https://github.com/user-attachments/assets/f2b35cb9-f324-42d7-8a5f-3909f116e430)
 
 
-### Transformation (Airlines Table)
+**3. Airlines Table**
 
  - Total Columns: 7
  - Total Rows: 322
@@ -223,7 +226,7 @@ ADD Status AS (
 
  - No transformations needed
 
-### Transformation (Cancelation Codes Table)
+**4. Cancelation Codes Table**
 
  - Total Columns: 2
  - Total Rows: 5
