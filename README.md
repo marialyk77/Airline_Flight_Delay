@@ -1,5 +1,72 @@
 # Airline Flight Delay
 
+
+## Project Overview
+
+- For this project, I used flight data from Maven Analytics, specifically following the Maven Crash Course as a starting point (https://mavenanalytics.io/crash-courses/go-from-data-to-dashboard-in-15-minutes-in-power-bi). 
+
+- While the course provided a strong starting point, I implemented additional, more advanced techniques to refine the data, improve organization, and enhance the user experience with insightful visualizations.
+
+## Key Enhancements and Deviations from the Original Course 
+
+1. Data Cleaning with SQL Server.
+   
+   Reason: The dataset was too large, which negatively impacted Power BI's performance.
+   
+2. Addition of one more table to the model with the use of Dax.
+   
+   Reason: To include the day name in the Bar Graph of cancellation rates for each day of the week. The additional table enabled better sorting of the days.
+   
+3. Created a specialized Measures Table with one subfolder.
+  
+   Reason: Measures used to build the visuals were organized into a subfolder for better structure.
+   
+4. Applied Conditional Formatting to the Bar Graph.
+   
+   Reason: Conditional formatting was used to highlight bars that exceeded a specific threshold value, using different colors.
+
+5. Customized Clustered Bar Chart with Advanced Labels.
+
+   Reason: This customization improved visibility and reduced clutter on the chart.
+
+6. Designed a pop-up panel.
+
+    Reason: The pop-up panel was designed to enhance usability and emphasize key insights.
+
+## Questions 
+
+1. What is the overall performance of flights, in terms of delays and cancellations?
+
+2. What are the key factors contributing to flight cancellations?
+
+3. Are there patterns in flight delays or cancellations by day of the week?
+
+## Summary of Insights 
+
+- Total Flights: 5.8 M
+
+- On- Time rate: 62%
+
+- Delayed rate: 36.5%
+
+- Cancellation rate: 1.5%
+
+- Busiest Month: July
+
+- Most Delays occur in: June
+
+- Cancellation reason is: Weather
+
+- Busiest Airport is: Chicago
+
+- Top Airline: United Air Lines Inc.
+
+## Suggestions for Improvement:
+
+1. Weather-related delays might benefit from improved predictive measures or alternative routing where possible.
+
+2. Analyze weekday travel trends to optimize staffing and resources on days with the highest demand.
+
 ## ETL
 
 ###  Extracted the data from 4 CSV files.
