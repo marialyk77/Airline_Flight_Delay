@@ -43,23 +43,23 @@
 
 ## Summary of Insights 
 
-- Total Flights: 5.8 M
+- **Total Flights**: 5.8 M
 
-- On- Time rate: 62%
+- **On- Time rate**: 62%
 
-- Delayed rate: 36.5%
+- **Delayed rate**: 36.5%
 
-- Cancellation rate: 1.5%
+- **Cancellation rate**: 1.5%
 
-- Busiest Month: July
+- **Busiest Month**: July
 
-- Most Delays occur in: June
+- **Most Delays occur in**: June
 
-- Cancellation reason is: Weather
+- **Cancellation reason is**: Weather
 
-- Busiest Airport is: Chicago
+- **Busiest Airport is**: Chicago
 
-- Top Airline: United Air Lines Inc.
+- **Top Airline**: United Air Lines Inc.
 
 ## Suggestions for Improvement:
 
