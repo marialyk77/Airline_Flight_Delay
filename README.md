@@ -31,7 +31,7 @@
 
 **6. Designed a pop-up panel.**
 
-    Reason: The pop-up panel was designed to enhance usability and emphasize key insights.
+   Reason: The pop-up panel was designed to enhance usability and emphasize key insights.
 
 ## Questions 
 
