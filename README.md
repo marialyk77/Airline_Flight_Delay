@@ -9,27 +9,27 @@
 
 ## Key Enhancements and Deviations from the Original Course 
 
-1. Data Cleaning with SQL Server.
+**1. Data Cleaning with SQL Server.**
    
    Reason: The dataset was too large, which negatively impacted Power BI's performance.
    
-2. Addition of one more table to the model with the use of Dax.
+**2. Addition of one more table to the model with the use of Dax.**
    
    Reason: To include the day name in the Bar Graph of cancellation rates for each day of the week. The additional table enabled better sorting of the days.
    
-3. Created a specialized Measures Table with one subfolder.
+**3. Created a specialized Measures Table with one subfolder.**
   
    Reason: Measures used to build the visuals were organized into a subfolder for better structure.
    
-4. Applied Conditional Formatting to the Bar Graph.
+**4. Applied Conditional Formatting to the Bar Graph.**
    
    Reason: Conditional formatting was used to highlight bars that exceeded a specific threshold value, using different colors.
 
-5. Customized Clustered Bar Chart with Advanced Labels.
+**5. Customized Clustered Bar Chart with Advanced Labels.**
 
    Reason: This customization improved visibility and reduced clutter on the chart.
 
-6. Designed a pop-up panel.
+**6. Designed a pop-up panel.**
 
     Reason: The pop-up panel was designed to enhance usability and emphasize key insights.
 
