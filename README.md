@@ -67,6 +67,11 @@
 
 2. Analyze weekday travel trends to optimize staffing and resources on days with the highest demand.
 
+
+## Tools Used
+
+SQL Server, Power BI
+
 ## ETL
 
 ###  Extracted the data from 4 CSV files.
