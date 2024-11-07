@@ -11,7 +11,7 @@
 
 **1. Data Cleaning with SQL Server.**
    
-   Reason: The dataset was too large, which negatively impacted Power BI's performance.
+   Reason: The dataset was too large, which negatively impacted Power BI's performance. Through thorough cleaning, I discovered that the Flights table only had data for the first 7 days of each month.
    
 **2. Addition of one more table to the model with the use of Dax.**
    
@@ -75,6 +75,8 @@ SQL Server, Power BI
 ## ETL
 
 ###  Extracted the data from 4 CSV files.
+
+The files contain data from 2015. 
 
 ![image](https://github.com/user-attachments/assets/16aa4a6e-4f78-4307-9a86-a27cb5be7b37)
 
