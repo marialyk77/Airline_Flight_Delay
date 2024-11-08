@@ -215,7 +215,7 @@ ADD Status AS (
 ![image](https://github.com/user-attachments/assets/a86cb9d5-6a9e-4d52-b263-0bf5b9404b6e)
 
 
-## LOAD 
+### LOAD 
 
 - **Connecting Power BI to SQL Server**: After preparing the FilteredFlights table in SQL Server, I connected Power BI to SQL Server to import the clean data.
 
