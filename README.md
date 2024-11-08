@@ -80,7 +80,7 @@ SQL Server, Power BI
 
 
 
-## Flights Table
+## Flights Fact Table
 
 - Challenges Encountered
 
@@ -226,7 +226,7 @@ I established the connection between Power BI and SQL Server using a parameter. 
 
 
 
-## Airlines Table
+## Airlines Dim Table
 
  - Total Columns: 2
  - Total Rows: 15
@@ -237,7 +237,7 @@ I established the connection between Power BI and SQL Server using a parameter. 
   ![image](https://github.com/user-attachments/assets/f2b35cb9-f324-42d7-8a5f-3909f116e430)
 
 
-## Airlines Table
+## Airlines Dim Table
 
  - Total Columns: 7
  - Total Rows: 322
@@ -245,7 +245,7 @@ I established the connection between Power BI and SQL Server using a parameter. 
 
  - No transformations needed
 
-## Cancelation Codes Table
+## Cancelation Codes Dim Table
 
  - Total Columns: 2
  - Total Rows: 5
