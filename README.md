@@ -123,7 +123,7 @@ FROM
 ```
 **Result**: By reducing the data in SQL Server, I was able to create a clean and manageable dataset.
 
-## EDA
+### EDA
 
 
 - 📝 **Data Integrity:** Ensured that the dataset had no null values.
