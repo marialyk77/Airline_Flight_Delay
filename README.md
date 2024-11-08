@@ -305,9 +305,22 @@ For the current project, the **Explanatory Analysis** involved the following key
 Breakdown: Cancellations by Month
 Result: 89.9 thousand cancellations, with February having the highest number of cancellations.
 
+## Visualization 
 
+![image](https://github.com/user-attachments/assets/e2c8c286-82f1-42f4-be96-c9e163e4189f)
 
+## Interpretation & Insights
 
+The Explanatory Analysis of the current project focused on three key performance indicators (KPIs): Total Flights, Total Delayed Flights, and Total Cancellations. The total number of flights reached 5.8 million, with July being the busiest month. Of these, 2.1 million flights (36.5%) were delayed, with June seeing the most delays. Cancellations accounted for 1.5% of all flights, totaling 89.9K cancellations, with February having the highest number of cancellations.
+
+In terms of flight status breakdown, approximately 62% of flights were on time, while delays made up 36.5%, and cancellations were relatively infrequent. The cancellation causes revealed that weather was the leading factor, particularly in February, when the highest number of cancellations occurred. This aligns with the weather disruptions being a major contributor to cancellations, highlighting the impact of seasonal weather conditions.
+
+The day of the week analysis indicated peak travel volumes midweek, especially around Wednesday and Thursday. The stacked bar chart of flight status further underscored the significant proportion of delayed flights compared to cancellations.
+
+**Suggestions for Improvement:**
+
+Weather-related delays and cancellations could be reduced by implementing better weather forecasting tools, alternative routing strategies, or more flexible scheduling during disruptive weather periods.
+Weekday travel trends suggest optimizing staffing and resources on midweek days when flight volumes peak, helping to improve operational efficiency and reduce delays.
 
 
 
