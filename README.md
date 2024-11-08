@@ -55,7 +55,7 @@
 
 - **Most Delays occur in**: June
 
-- **Most Cancellatons occur in**: February
+- **Most Cancellations occur in**: February
 
 - **Cancellation reason is**: Weather
 
