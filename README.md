@@ -285,6 +285,25 @@ DATATABLE(
 ![image](https://github.com/user-attachments/assets/8f6bb873-1991-4ed0-90e7-5de117ddc16d)
 
 
+## Explanatory Analysis 
+
+For the current project, the **Explanatory Analysis** involved the following key performance indicators (KPIs):
+
+**1. Total Flights**
+
+- Breakdown: Total Flights by Month
+
+- Result: 5.8 million flights in total, with July being the busiest month.
+
+**2. Total Delayed Flights**
+
+- Breakdown: Delayed Flights by Month
+- Result: 2.1 million delayed flights, with June experiencing the most delays.
+  
+**3. Total Cancellations**
+
+Breakdown: Cancellations by Month
+Result: 89.9 thousand cancellations, with February having the highest number of cancellations.
 
 
 
