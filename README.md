@@ -319,8 +319,9 @@ The day of the week analysis indicated peak travel volumes midweek, especially a
 
 **Suggestions for Improvement:**
 
-Weather-related delays and cancellations could be reduced by implementing better weather forecasting tools, alternative routing strategies, or more flexible scheduling during disruptive weather periods.
-Weekday travel trends suggest optimizing staffing and resources on midweek days when flight volumes peak, helping to improve operational efficiency and reduce delays.
+1. Weather-related delays and cancellations could be reduced by implementing better weather forecasting tools, alternative routing strategies, or more flexible scheduling during disruptive weather periods.
+
+2. Weekday travel trends suggest optimizing staffing and resources on midweek days when flight volumes peak, helping to improve operational efficiency and reduce delays.
 
 
 
