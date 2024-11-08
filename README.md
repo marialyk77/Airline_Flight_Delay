@@ -72,34 +72,39 @@
 
 SQL Server, Power BI
 
-## ETL
+## Data source 
 
-###  Extracted the data from 4 CSV files.
-
-The files contain data from 2015. 
+4 Csv files with flight data from 2015.  
 
 ![image](https://github.com/user-attachments/assets/16aa4a6e-4f78-4307-9a86-a27cb5be7b37)
 
-I quickly realized that the *Flights table* **was too large**, which was impacting model performance. To address this, I saved the file in **SQL Server**, performed the necessary data cleaning there, and then established a connection between SQL Server and Power BI to import **the cleaned Flights table**.
+
+
+## Flights Table
+
+- Challenges Encountered
+
+The Flights table was too large, which impacted performance and efficiency during analysis in Power BI.
+
+To address this, I chose to perform data cleaning and transformation in SQL Server directly, rather than within Power BI, for improved processing speed. 💡 (*A decision made solely by the project author*) 💡
 
 ![image](https://github.com/user-attachments/assets/dd97f4b3-aaac-48b4-8428-758d3ae37924)
 
-I established the connection between Power BI and SQL Server using a parameter. I know it might be a bit of an exaggeration for this project, but I'm always happy to practice my skills.
+### ETL
 
-![image](https://github.com/user-attachments/assets/ff657b7d-b7e7-4961-9760-fa787563ae6a)
+**1. Extract**
+
+The data was extracted from the original dbo.flights table in SQL Server, which contained:
+- Columns: 31
+- Rows: 5,819,079
+- Table Type: This is the Fact Table in the data model, as it holds core flight data (e.g., departure details, airline info, delays).
 
 
+**2. Transform**
 
-**1. Flights Table**
+Data Cleaning and Filtering in **SQL Server**:
 
-- Is the Fact Table.
-- Total Columns: 31
-- Total Rows: 5.819.079
-- Data cleaning and Exploratory Data Analysis was performed in **SQL Server**. 💡 (*A decision made solely by the project author*) 💡
-  
-### Transformation 
-
-- 📝 Kept only the **necessary** collumns.
+Selected only the necessary columns to create a more efficient dataset focused on relevant information, which I called: dbo.FilteredFlights.
 
 ```ruby
 SELECT 
@@ -116,8 +121,12 @@ INTO
 FROM 
     dbo.flights;
 ```
+**Result**: By reducing the data in SQL Server, I was able to create a clean and manageable dataset.
 
-- 📝 **Data Integrity:** The dataset is complete. No Nulls
+## EDA
+
+
+- 📝 **Data Integrity:** Ensured that the dataset had no null values.
 
 ```ruby
 SELECT 
@@ -138,7 +147,7 @@ FROM
  > [!IMPORTANT]
  > Important to note that null values represent the absence of data (*in other words it is not known if there should have been a value*), which differs from an empty or blank entry (*Empty indicates that the absence of content is intentional*).
 
-- 📝 **Data Completeness:** The dataset contained 2 columns with Empty values: 
+- 📝 **Data Completeness:** Identified 2 columns with missing values. 
 
 ![image](https://github.com/user-attachments/assets/4df0cbce-96b9-4b21-84f1-8c6080d7af1a)
 
@@ -148,9 +157,9 @@ FROM
 1. **Cancellation Reason**: Out of the total 5,819,079 rows, **5,729,195 were empty**! That is a good thing: The vast majority of flights **did not face cancellations**. 
 2. **Departure Delay**: Out of the total 5,819,079 rows, **86,153 were empty**! That is not so a good thing: The vast majority of flights **recorded a departure delay**. Therefore, it suggests that these flights experienced delays. We should later investigate how significant these delays were.
 
-## EDA 
+### Data Transformation for Analysis
 
-- 📝 Added a new column *Date* by combining the colums: *Year, Month & Day of Week*.
+- 📝 Adding a **Date Column**: Created a new *FullDate* column by combining Year, Month, and Day_of_Week.
   
 ```ruby
 ALTER TABLE dbo.FilteredFlights
@@ -160,7 +169,7 @@ UPDATE dbo.FilteredFlights
 SET FullDate = CAST(CONCAT(YEAR, '-', MONTH, '-', DAY_OF_WEEK) AS DATE);
 
 ```
-- 📝 Check if the *FullDate* column includes data for the entire year: 
+- 📝 Checking **Distinct Dates**: Analyzed the distinct dates in the *FullDate* column to assess temporal coverage.
 
 ```ruby
 SELECT 
@@ -173,7 +182,7 @@ FROM
 ![image](https://github.com/user-attachments/assets/12018294-ff20-42c3-8465-b5341832c1f3)
 
 
-- 📝 Check how many records exist for each day:
+- 📝 Analyzing **Records Per Date**: Further analyzed data by checking the number of records per date to identify any patterns or gaps.
 
 ```ruby
 SELECT FullDate, COUNT(*) AS RecordsPerDate
@@ -188,7 +197,7 @@ ORDER BY FullDate;
 
 
 
-- 📝 Added a new calculated column *Status* : **On Time, Delayed, Cancelled.**
+- 📝 Adding a **Status Column**: Created a calculated column Status to categorize flights as "On Time," "Delayed," or "Cancelled."
 
 ```ruby
 ALTER TABLE dbo.FilteredFlights
@@ -204,6 +213,16 @@ ADD Status AS (
 **Result:**
 
 ![image](https://github.com/user-attachments/assets/a86cb9d5-6a9e-4d52-b263-0bf5b9404b6e)
+
+
+## LOAD 
+
+- **Connecting Power BI to SQL Server**: After preparing the FilteredFlights table in SQL Server, I connected Power BI to SQL Server to import the clean data.
+
+**Using a Parameter for Connection**: I set up the connection using a parameter to define the SQL Server source. While this level of flexibility isn’t strictly necessary for this project, I included it as an opportunity to practice parameterization, which can improve scalability and maintainability in larger or more complex projects.
+I established the connection between Power BI and SQL Server using a parameter. I know it might be a bit of an exaggeration for this project, but I'm always happy to practice my skills.
+
+![image](https://github.com/user-attachments/assets/ff657b7d-b7e7-4961-9760-fa787563ae6a)
 
 
 
