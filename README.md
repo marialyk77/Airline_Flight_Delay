@@ -220,7 +220,6 @@ ADD Status AS (
 - **Connecting Power BI to SQL Server**: After preparing the FilteredFlights table in SQL Server, I connected Power BI to SQL Server to import the clean data.
 
 **Using a Parameter for Connection**: I set up the connection using a parameter to define the SQL Server source. While this level of flexibility isn’t strictly necessary for this project, I included it as an opportunity to practice parameterization, which can improve scalability and maintainability in larger or more complex projects.
-I established the connection between Power BI and SQL Server using a parameter. I know it might be a bit of an exaggeration for this project, but I'm always happy to practice my skills.
 
 ![image](https://github.com/user-attachments/assets/ff657b7d-b7e7-4961-9760-fa787563ae6a)
 
