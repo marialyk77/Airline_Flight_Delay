@@ -39,7 +39,7 @@
 
 2. What are the key factors contributing to flight cancellations?
 
-3. Are there patterns in flight delays or cancellations by day of the week?
+3. Do flight delays or cancellations follow a pattern based on the day of the week?
 
 ## Summary of Insights 
 
